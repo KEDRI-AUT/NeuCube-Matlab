@@ -1,0 +1,277 @@
+function [ json_cube ] = m2json_cube( cube )
+%M2JSON_CUBE Summary of this function goes here
+%   Detailed explanation goes here
+if(isfield(cube,'is_extended'))
+    if(isempty(cube.is_extended))
+        json_cube.is_extended={};
+    else
+        json_cube.is_extended=cube.is_extended;
+    end
+end
+if(isfield(cube,'small_world_radius'))
+    if(isempty(cube.small_world_radius))
+        json_cube.small_world_radius={};
+    else
+        json_cube.small_world_radius=cube.small_world_radius;
+    end
+end
+if(isfield(cube,'LDC_probability'))
+    if(isempty(cube.LDC_probability))
+        json_cube.LDC_probability={};
+    else
+        json_cube.LDC_probability=cube.LDC_probability;
+    end
+end
+if(isfield(cube,'LDC_initial_weight'))
+    if(isempty(cube.LDC_initial_weight))
+        json_cube.LDC_initial_weight={};
+    else
+        json_cube.LDC_initial_weight=cube.LDC_initial_weight;
+    end
+end
+if(isfield(cube,'training_round'))
+    if(isempty(cube.training_round))
+        json_cube.training_round={};
+    else
+        json_cube.training_round=cube.training_round;
+    end
+end
+if(isfield(cube,'step'))
+    if(isempty(cube.step))
+        json_cube.step={};
+    else
+        json_cube.step=cube.step;
+    end
+end
+if(isfield(cube,'type'))
+    if(isempty(cube.type))
+        json_cube.type={};
+    else
+        json_cube.type=cube.type;
+    end
+end
+
+if(isfield(cube,'classifier_flag'))
+    if(isempty(cube.classifier_flag))
+        json_cube.classifier.classifier_flag={};
+    else
+        json_cube.classifier.classifier_flag=cube.classifier_flag;
+    end
+end
+if(isfield(cube.classifier,'mod'))
+    if(isempty(cube.classifier.mod))
+        json_cube.classifier.mod={};
+    else
+        json_cube.classifier.mod=cube.classifier.mod;
+    end
+end
+if(isfield(cube.classifier,'drift'))
+    if(isempty(cube.classifier.drift))
+        json_cube.classifier.drift={};
+    else
+        json_cube.classifier.drift=cube.classifier.drift;
+    end
+end
+if(isfield(cube.classifier,'K'))
+    if(isempty(cube.classifier.K))
+        json_cube.classifier={};
+    else
+        json_cube.classifier.K=cube.classifier.K;
+    end
+end
+if(isfield(cube.classifier,'sigma'))
+    if(isempty(cube.classifier.sigma))
+        json_cube.classifier.sigma={};
+    else
+        json_cube.classifier.sigma=cube.classifier.sigma;
+    end
+end
+if(isfield(cube.classifier,'C'))
+    if(isempty(cube.classifier.C))
+        json_cube.classifier.C={};
+    else
+        json_cube.classifier.C=cube.classifier.C;
+    end
+end
+if(isfield(cube.classifier,'output_neurals_weight'))
+    if(isempty(cube.classifier.output_neurals_weight))
+        json_cube.classifier.output_neurals_weight={};
+        json_cube.classifier.output_neurals_weight_dim1={};
+        json_cube.classifier.output_neurals_weight_dim2={};
+    else
+        json_cube.classifier.output_neurals_weight=cube.classifier.output_neurals_weight;
+        json_cube.classifier.output_neurals_weight_dim1=size(cube.classifier.output_neurals_weight,1);
+        json_cube.classifier.output_neurals_weight_dim2=size(cube.classifier.output_neurals_weight,2);;
+    end
+end
+if(isfield(cube.classifier,'training_target_value'))
+    if(isempty(cube.classifier.training_target_value))
+        json_cube.classifier.training_target_value={};
+    else
+        json_cube.classifier.training_target_value=cube.classifier.training_target_value;
+    end
+end
+if(isfield(cube.classifier,'x'))
+    if(isempty(cube.classifier.x))
+        json_cube.classifier.x={};
+    else
+        json_cube.classifier.x=cube.classifier.x;
+    end
+end
+if(isfield(cube.classifier,'y'))
+    if(isempty(cube.classifier.y))
+        json_cube.classifier.y={};
+    else
+        json_cube.classifier.y=cube.classifier.y;
+    end
+end
+if(isfield(cube.classifier,'output_neurals_train_weight'))
+    if(isempty(cube.classifier.output_neurals_train_weight))
+        json_cube.classifier.output_neurals_train_weight={};
+        json_cube.classifier.output_neurals_train_weight_dim1={};
+        
+    else
+        json_cube.classifier.output_neurals_train_weight=cube.classifier.output_neurals_train_weight;
+        json_cube.classifier.output_neurals_train_weight_dim1=size(cube.classifier.output_neurals_train_weight,1);
+    end
+end
+if(isfield(cube.classifier,'output_neurals_test_weight'))
+    if(isempty(cube.classifier.output_neurals_test_weight))
+        json_cube.classifier.output_neurals_train_weight={};
+        json_cube.classifier.output_neurals_test_weight_dim1={};
+    else
+        json_cube.classifier.output_neurals_test_weight=cube.classifier.output_neurals_test_weight;
+        json_cube.classifier.output_neurals_test_weight_dim1=size(cube.classifier.output_neurals_test_weight,1);
+    end
+end
+if(isfield(cube.classifier,'firing_order'))
+    if(isempty(cube.classifier.firing_order))
+        json_cube.classifier.firing_order={};
+    else
+        json_cube.classifier.firing_order=cube.classifier.firing_order;
+    end
+end
+if(isfield(cube.classifier,'output_neurals_PSP'))
+    if(isempty(cube.classifier.output_neurals_PSP))
+        json_cube.classifier.output_neurals_PSP={};
+    else
+        json_cube.classifier.output_neurals_PSP=cube.classifier.output_neurals_PSP;
+    end
+end
+if(isfield(cube,'neuron_location'))
+    if(isempty(cube.neuron_location))
+        json_cube.structure.neuron_count={};   
+    else
+        json_cube.structure.neuron_count=size(cube.neuron_location,1);
+    end
+end
+if(isfield(cube,'indices_of_input_neuron'))
+    if(isempty(cube.indices_of_input_neuron))
+        json_cube.structure.input_neuron_count={};   
+    else
+        json_cube.structure.input_neuron_count=size(cube.indices_of_input_neuron,1);
+    end
+end
+if(isfield(cube,'neucube_output'))
+    if(isempty(cube.neucube_output))
+        json_cube.structure.spike_state_count={};
+    else
+        json_cube.structure.spike_state_count=size(cube.neucube_output,1);
+    end
+end
+if(isfield(cube,'neuron_location'))
+    if(isempty(cube.neuron_location))
+        json_cube.structure.neuron_location={};
+    else
+        json_cube.structure.neuron_location=cube.neuron_location;
+    end
+end
+if(isfield(cube,'neucube_connection'))
+    if(isempty(cube.neucube_connection))
+        json_cube.structure.connection_matrix={};
+    else
+        json_cube.structure.connection_matrix=cube.neucube_connection;
+    end
+end
+if(isfield(cube,'neucube_weight'))
+    if(isempty(cube.neucube_weight))
+        json_cube.structure.weight_matrix={};
+    else
+        json_cube.structure.weight_matrix=cube.neucube_weight;
+    end
+end
+if(isfield(cube,'neumid'))
+    if(isempty(cube.neumid))
+        json_cube.structure.neumid={};
+    else
+        json_cube.structure.neumid=cube.neumid;
+    end
+end
+if(isfield(cube,'input_mapping'))
+    if(isempty(cube.input_mapping{2}))
+        json_cube.structure.input_names={};
+    else
+        json_cube.structure.input_names=cube.input_mapping{2}';
+    end
+end
+if(isfield(cube,'neucube_output'))
+    if(isempty(cube.neucube_output))
+        json_cube.structure.spike_states={};
+    else
+        json_cube.structure.spike_states=cube.neucube_output;
+    end
+end
+if(isfield(cube,'STDP_rate'))
+    if(isempty(cube.STDP_rate))
+        json_cube.structure.STDP_rate={};
+    else
+        json_cube.structure.STDP_rate=cube.STDP_rate;
+    end
+end
+if(isfield(cube,'threshold_of_firing'))
+    if(isempty(cube.threshold_of_firing))
+        json_cube.structure.threshold_of_firing={};
+    else
+        json_cube.structure.threshold_of_firing=cube.threshold_of_firing;
+    end
+end
+if(isfield(cube,'potential_leak_rate'))
+    if(isempty(cube.potential_leak_rate))
+        json_cube.structure.potential_leak_rate={};
+    else
+        json_cube.structure.potential_leak_rate=cube.potential_leak_rate;
+    end
+end
+if(isfield(cube,'refactory_time'))
+    if(isempty(cube.refactory_time))
+        json_cube.structure.refactory_time={};
+    else
+        json_cube.structure.refactory_time=cube.refactory_time;
+    end
+end
+if(isfield(cube,'spike_transmission_amount'))
+    if(isempty(cube.spike_transmission_amount))
+        json_cube.structure.spike_transmission_amount={};
+    else
+        json_cube.structure.spike_transmission_amount=cube.spike_transmission_amount;
+    end
+end
+if(isfield(cube,'indices_of_input_neuron'))
+    if(isempty(cube.indices_of_input_neuron))
+        json_cube.structure.input_indices={};
+    else
+        json_cube.structure.input_indices=cube.indices_of_input_neuron;
+    end
+end
+if(isfield(cube,'input_neighbors'))
+    if(isempty(cube.input_neighbors))
+        json_cube.input_neighbors={};
+    else
+        json_cube.input_neighbors=cube.input_neighbors;
+    end
+end
+
+json_cube.filetype=3;
+
+end
+

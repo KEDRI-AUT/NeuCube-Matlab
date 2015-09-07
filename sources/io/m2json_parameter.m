@@ -1,0 +1,200 @@
+function [ json_param ] = m2json_parameter( param )
+%M2JSON_PARAMETER Summary of this function goes here
+%   Detailed explanation goes here
+
+%%check for param.encoding
+if(isfield(param.encoding,'method'))
+    if(isempty(param.encoding.method))
+        json_param.encoding.method={};
+    else
+        json_param.encoding.method=param.encoding.method;
+    end
+end
+if(isfield(param.encoding,'spike_threshold'))
+    if(isempty(param.encoding.spike_threshold))
+        json_param.encoding.spike_threshold={};
+    else
+        json_param.encoding.spike_threshold=param.encoding.spike_threshold;
+    end
+end
+if(isfield(param.encoding,'training_set_ratio'))
+    if(isempty(param.encoding.training_set_ratio))
+        json_param.encoding.training_set_ratio={};
+    else
+        json_param.encoding.training_set_ratio=param.encoding.training_set_ratio;
+    end
+end
+if(isfield(param.encoding,'training_time_length'))
+    if(isempty(param.encoding.training_time_length))
+        json_param.encoding.training_time_length={};
+    else
+        json_param.encoding.training_time_length=param.encoding.training_time_length;
+    end
+end
+if(isfield(param.encoding,'validation_time_length'))
+    if(isempty(param.encoding.validation_time_length))
+        json_param.encoding.validation_time_length={};
+    else
+        json_param.encoding.validation_time_length=param.encoding.validation_time_length;
+    end
+end
+if(isfield(param.encoding,'window_size'))
+    if(isempty(param.encoding.window_size))
+        json_param.encoding.window_size={};
+    else
+        json_param.encoding.window_size=param.encoding.window_size;
+    end
+end
+if(isfield(param.encoding,'filter_type'))
+    if(isempty(param.encoding.filter_type))
+        json_param.encoding.filter_type={};
+    else
+        json_param.encoding.filter_type=param.encoding.filter_type;
+    end
+end
+%%check for param.init
+if(isfield(param.init,'neuron_number_x'))
+    if(isempty(param.init.neuron_number_x))
+        json_param.init.neuron_number_x={};
+    else
+        json_param.init.neuron_number_x=param.init.neuron_number_x;
+    end
+end
+if(isfield(param.init,'neuron_number_y'))
+    if(isempty(param.init.neuron_number_y))
+        json_param.init.neuron_number_y={};
+    else
+        json_param.init.neuron_number_y=param.init.neuron_number_y;
+    end
+end
+if(isfield(param.init,'neuron_number_z'))
+    if(isempty(param.init.neuron_number_z))
+        json_param.init.neuron_number_z={};
+    else
+        json_param.init.neuron_number_z=param.init.neuron_number_z;
+    end
+end
+if(isfield(param.init,'small_world_radius'))
+    if(isempty(param.init.small_world_radius))
+        json_param.init.small_world_radius={};
+    else
+        json_param.init.small_world_radius=param.init.small_world_radius;
+    end
+end
+if(isfield(param.init,'input_mapping'))
+    if(isempty(param.init.input_mapping))
+        json_param.init.input_mapping={};
+    else
+        json_param.init.input_mapping=param.init.input_mapping;
+    end
+end
+if(isfield(param.init,'mapping_coordinate'))
+    if(isempty(param.init.mapping_coordinate))
+        json_param.init.mapping_coordinate={};
+    else
+        json_param.init.mapping_coordinate=param.init.mapping_coordinate;
+    end
+end
+if(isfield(param.init,'neuron_coord_method'))
+    if(isempty(param.init.neuron_coord_method))
+        json_param.init.neuron_coord_method={};
+    else
+        json_param.init.neuron_coord_method=param.init.neuron_coord_method;
+    end
+end
+if(isfield(param.init,'neuron_location'))
+    if(isempty(param.init.neuron_location))
+        json_param.init.neuron_location={};
+    else
+        json_param.init.neuron_location=param.init.neuron_location;
+    end
+end
+%%check for param.unsup
+if(isfield(param.unsup,'potential_leak_rate'))
+    if(isempty(param.unsup.potential_leak_rate))
+        json_param.unsup.potential_leak_rate={};
+    else
+        json_param.unsup.potential_leak_rate=param.unsup.potential_leak_rate;
+    end
+end
+if(isfield(param.unsup,'STDP_rate'))
+    if(isempty(param.unsup.STDP_rate))
+        json_param.unsup.STDP_rate={};
+    else
+        json_param.unsup.STDP_rate=param.unsup.STDP_rate;
+    end
+end
+if(isfield(param.unsup,'threshold_of_firing'))
+    if(isempty(param.unsup.threshold_of_firing))
+        json_param.unsup.threshold_of_firing={};
+    else
+        json_param.unsup.threshold_of_firing=param.unsup.threshold_of_firing;
+    end
+end
+if(isfield(param.unsup,'training_round'))
+    if(isempty(param.unsup.training_round))
+        json_param.unsup.training_round={};
+    else
+        json_param.unsup.training_round=param.unsup.training_round;
+    end
+end
+if(isfield(param.unsup,'refactory_time'))
+    if(isempty(param.unsup.refactory_time))
+        json_param.unsup.refactory_time={};
+    else
+        json_param.unsup.refactory_time=param.unsup.refactory_time;
+    end
+end
+if(isfield(param.unsup,'LDC_probability'))
+    if(isempty(param.unsup.LDC_probability))
+        json_param.unsup.LDC_probability={};
+    else
+        json_param.unsup.LDC_probability=param.unsup.LDC_probability;
+    end
+end
+%%check for param.sup
+if(isfield(param.sup,'classifier_flag'))
+    if(isempty(param.sup.classifier_flag))
+        json_param.sup.classifier_flag={};
+    else
+        json_param.sup.classifier_flag=param.sup.classifier_flag;
+    end
+end
+if(isfield(param.sup,'mod'))
+    if(isempty(param.sup.mod))
+        json_param.sup.mod={};
+    else
+        json_param.sup.mod=param.sup.mod;
+    end
+end
+if(isfield(param.sup,'drift'))
+    if(isempty(param.sup.drift))
+        json_param.sup.drift={};
+    else
+        json_param.sup.drift=param.sup.drift;
+    end
+end
+if(isfield(param.sup,'K'))
+    if(isempty(param.sup.K))
+        json_param.sup.K={};
+    else
+        json_param.sup.K=param.sup.K;
+    end
+end
+if(isfield(param.sup,'sigma'))
+    if(isempty(param.sup.sigma))
+        json_param.sup.sigma={};
+    else
+        json_param.sup.sigma=param.sup.sigma;
+    end
+end
+if(isfield(param.sup,'C'))
+    if(isempty(param.sup.C))
+        json_param.sup.C={};
+    else
+        json_param.sup.C=param.sup.C;
+    end
+end
+json_param.filetype=2;
+end
+

@@ -1,0 +1,9 @@
+function checkstate=getcheck(handles)
+checkstate(1)=get(handles.aer_threshold_checkbox,'value');
+    checkstate(2)=get(handles.connection_distance_checkbox,'value');
+    checkstate(3)=get(handles.stdp_rate_checkbox,'value');
+    checkstate(4)=get(handles.threshold_of_firing_checkbox,'value');
+    checkstate(5)=get(handles.refactory_time_checkbox,'value');
+    checkstate(6)=get(handles.training_time_checkbox,'value');
+    checkstate(7)=get(handles.mod_checkbox,'value');
+    checkstate(8)=get(handles.drift_checkbox,'value');
