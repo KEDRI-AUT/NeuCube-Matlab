@@ -102,9 +102,9 @@ if isstruct(unsup_params)
     set(handles.potential_leak_rate_edit,'string', unsup_params.potential_leak_rate);
     set(handles.STDP_rate_edit, 'string', unsup_params.STDP_rate);
     set(handles.threshold_of_firing_edit, 'string', unsup_params.threshold_of_firing);
-    set(handles.training_round_edit, 'value', unsup_params.training_round);
-    set(handles.refactory_time_edit, 'value', unsup_params.refactory_time);
-    set(handles.LDC_probability_edit, 'value', unsup_params.LDC_probability);
+    set(handles.training_round_edit, 'string', unsup_params.training_round);
+    set(handles.refactory_time_edit, 'string', unsup_params.refactory_time);
+    set(handles.LDC_probability_edit, 'string', unsup_params.LDC_probability);
 end
 
 sup_params=gui_params.sup;
