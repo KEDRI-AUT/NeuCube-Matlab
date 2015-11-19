@@ -30,6 +30,7 @@ answer = inputdlg(prompt,dlg_title,num_lines,def);
 if isempty(answer)
     return;
 end
+
 output_information('Please wait for plotting...', handles);
 set(gcf,'Pointer','watch');
 drawnow
@@ -104,6 +105,14 @@ else
     linehandles=zeros(number_of_neucube_neural*number_of_neucube_neural,1)*inf;
     n=0;
     %draw weights using different linewidth
+    
+    
+    %The size of the arrowhead need to be adjusted
+    %depending on how big the cube is. The below
+    %calculation is just a logarithmic function fitted from
+    %what I think is the appropriate sizes
+    arrowsize = 23*exp(0.00048*number_of_neucube_neural);
+
     for i = 1:number_of_neucube_neural
         for j = 1:number_of_neucube_neural
             if neucube_connection(i,j) == 1 && L(i,j)
@@ -132,12 +141,8 @@ else
                 
                 if (strcmp(answer{2},'y') == 1)
                     param = sprintf('%s%.2f',color,neucube_weight_scale(i,j));
-                    %The size of the arrowhead need to be adjusted
-                    %depending on how big the cube is. The below
-                    %calculation is just a logarithmic function fitted from
-                    %what I think is the appropriate sizes
-                    linewidth = 23*exp(0.00048*number_of_neucube_neural);
-                    arrow3(a_temp,b_temp,param,linewidth);
+                    
+                    arrow3(a_temp,b_temp,param,arrowsize,1.5*arrowsize);
                 else
                     plot3(a,b,c,color,'linewidth',neucube_weight_scale(i,j));
                 end
