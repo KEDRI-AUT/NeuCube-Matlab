@@ -172,13 +172,6 @@ if(isfield(cube,'indices_of_input_neuron'))
         json_cube.structure.input_neuron_count=size(cube.indices_of_input_neuron,1);
     end
 end
-if(isfield(cube,'neucube_output'))
-    if(isempty(cube.neucube_output))
-        json_cube.structure.spike_state_count={};
-    else
-        json_cube.structure.spike_state_count=size(cube.neucube_output,1);
-    end
-end
 if(isfield(cube,'neuron_location'))
     if(isempty(cube.neuron_location))
         json_cube.structure.neuron_location={};
@@ -212,6 +205,13 @@ if(isfield(cube,'input_mapping'))
         json_cube.structure.input_names={};
     else
         json_cube.structure.input_names=cube.input_mapping{2}';
+    end
+end
+if(isfield(cube,'neucube_output'))
+    if(isempty(cube.neucube_output))
+        json_cube.structure.spike_state_count={};
+    else
+        json_cube.structure.spike_state_count=size(cube.neucube_output,1);
     end
 end
 if(isfield(cube,'neucube_output'))
