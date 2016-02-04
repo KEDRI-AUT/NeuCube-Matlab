@@ -42,7 +42,7 @@ axis(handles.axes5,'off');
 % if ~flag
 %     retrun;
 % end
-str=sprintf('NeuCube is a Neurocomputing Software/Hardware Development Environment for Spiking Neural Network Applications in Data Mining, Pattern Recognition and Predictive Data Modelling. NeuCube is an intellectual property owned by AUT.\n\n Please load your dataset from file menu.');
+str=sprintf('NeuCube is a Neurocomputing Software/Hardware Development Environment for Spiking Neural Network Applications in Data Mining, Pattern Recognition and Predictive Data Modelling. NeuCube is an intellectual property owned by AUT.\n\nPlease load your dataset from file menu.');
 %str=sprintf('Copyright KEDRI (Please see "http://www.kedri.aut.ac.nz/neucube" for further detail)\n\nPlease load your dataset from file menu');
 output_information(str,handles);
 handles.gui_params=reset_parameters();
