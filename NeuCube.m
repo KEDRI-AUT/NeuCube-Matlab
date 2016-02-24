@@ -22,7 +22,7 @@ if ~isdeployed
     addpath(genpath(currentFolder));
 end
 cla reset
-I=imread('img\neurocomputing.png');
+I=imread('img/neurocomputing.png');
 imshowh(handles.architecture_axes,I);
 handles.output = hObject;
 guidata(hObject, handles);
