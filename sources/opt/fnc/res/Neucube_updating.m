@@ -18,6 +18,7 @@ neuinput=neucube.input_mapping{1};
 neumid=neucube.neumid;
 
 if state_flag==1 
+    % This block of code will not run if DeSNN Verification happens
     spike_state=dataset.spike_state_for_training;
     length_per_sample=dataset.training_time_length;
     if STDP==1 && LDCprobability>0 
