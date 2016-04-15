@@ -2,6 +2,23 @@ function view_spike_raster_Callback(hObject, eventdata, handles)
 
 global linehandles
 
+if(~isfield(handles,'neucube'))
+    msgbox('SNNcube is not trained!!')
+    return
+else
+    if(~isfield(handles.neucube,'neucube_output'))
+        msgbox('SNNcube is not trained!!')
+        return
+    end
+end
+
+% if isempty(neucube_connection) || isempty(neucube.neucube_output)
+%     msgbox('Please train the NeuCube first');
+%     return;
+% end
+
+
+
 dataset=handles.dataset;
 if isempty(dataset.data)
     msgbox('Please load a dataset first');
@@ -16,10 +33,10 @@ neumid=neucube.neumid;
 neuinput=neucube.input_mapping{1};
 feature_names=neucube.input_mapping{2};
 
-if isempty(neucube_connection) || isempty(neucube.neucube_output)
-    msgbox('Please train the NeuCube first');
-    return;
-end
+
+
+
+
 
 str=sprintf('Which sample number to be displayed [1...%d]:',dataset.total_sample_number);
 prompt = {str,'Display only feature neurons? (y/n)'};
@@ -67,6 +84,8 @@ if(~strcmp(answer{2},'n'))
 end
 
 plotSpikeRaster(spike_times,'PlotType','vertline','XLimForCell',[1 dataset.length_per_sample]);
+xlabel('time')
+ylabel('neuron id')
 
 inputs = neucube.indices_of_input_neuron;
 for i = 1:numel(inputs)

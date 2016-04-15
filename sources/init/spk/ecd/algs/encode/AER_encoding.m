@@ -1,4 +1,5 @@
 function dataset=AER_encoding(dataset, flag)
+
 % flag: true to encode training data, else to encode validation data
 
 %==========================
@@ -67,4 +68,4 @@ elseif flag==false && sample_amount_for_validation>=0
     end
     dataset.spike_state_for_validation=spike_state_for_validation;
 end
-t=0;
+

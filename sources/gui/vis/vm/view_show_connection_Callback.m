@@ -4,7 +4,7 @@ global linehandles
 
 dataset=handles.dataset;
 if isempty(dataset.data)
-    msgbox('Please load a dataset first');
+    msgbox('Please load you dataset!');
     return;
 end
 neucube=handles.neucube;
@@ -16,21 +16,20 @@ neumid=neucube.neumid;
 neuinput=neucube.input_mapping{1};
 
 if isempty(neucube_connection)
-    msgbox('Please train the NeuCube first');
+    msgbox('Please training the NeuCube!');
     return;
 end
 
 str=sprintf('Enter the weight threshold to be shown:');
-prompt = {str,'Display directional connections? (y/n)'};
-dlg_title = 'Show Connection Settings';
+prompt = {str};
+dlg_title = 'NeuCube';
 num_lines = 1;
 
-def = {'0.08','y'};
+def = {'0.08'};
 answer = inputdlg(prompt,dlg_title,num_lines,def);
 if isempty(answer)
     return;
 end
-
 output_information('Please wait for plotting...', handles);
 set(gcf,'Pointer','watch');
 drawnow
@@ -105,14 +104,6 @@ else
     linehandles=zeros(number_of_neucube_neural*number_of_neucube_neural,1)*inf;
     n=0;
     %draw weights using different linewidth
-    
-    
-    %The size of the arrowhead need to be adjusted
-    %depending on how big the cube is. The below
-    %calculation is just a logarithmic function fitted from
-    %what I think is the appropriate sizes
-    arrowsize = 23*exp(0.00048*number_of_neucube_neural);
-
     for i = 1:number_of_neucube_neural
         for j = 1:number_of_neucube_neural
             if neucube_connection(i,j) == 1 && L(i,j)
@@ -122,29 +113,12 @@ else
                 b = [corrd1(2) corrd2(2)];
                 c = [corrd1(3) corrd2(3)];
                 
-                a_temp = [corrd1(1) corrd1(2) corrd1(3)];
-                b_temp = [corrd2(1) corrd2(2) corrd2(3)];
-                
                 if neucube_weight(i,j) > 0  % the weight of neucube after unsupervised learning using the training data
-                    color = 'b';
-                    %linehandles(n)=plot3(a,b,c,'b','linewidth',neucube_weight_scale(i,j));
-                    %linehandles(n)=arrow3(a_temp,b_temp,'r',1,neucube_weight_scale(i,j));
-                    %arrow3(a_temp,b_temp,'b',12);
+                    n=n+1;
+                    linehandles(n)=plot3(a,b,c,'b','linewidth',neucube_weight_scale(i,j));
                 elseif neucube_weight(i,j) < 0
-                    %n=n+1;
-                    %linehandles(n)=plot3(a,b,c,'r','linewidth',neucube_weight_scale(i,j));
-                    %linehandles(n)=arrow3(a,b,c,'b','linewidth',neucube_weight_scale(i,j));
-                    %arrow3(a_temp,b_temp,'r',12);
-                    color = 'r';
-                end
-                n=n+1;
-                
-                if (strcmp(answer{2},'y') == 1)
-                    param = sprintf('%s%.2f',color,neucube_weight_scale(i,j));
-                    
-                    arrow3(a_temp,b_temp,param,arrowsize,1.5*arrowsize);
-                else
-                    plot3(a,b,c,color,'linewidth',neucube_weight_scale(i,j));
+                    n=n+1;
+                    linehandles(n)=plot3(a,b,c,'r','linewidth',neucube_weight_scale(i,j));
                 end
             end
         end

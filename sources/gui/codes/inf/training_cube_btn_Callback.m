@@ -12,10 +12,10 @@ if dataset.feature_number~=neucube.number_of_input || dataset.type ~= neucube.ty
     msgbox('The NeuCube cannot process this dataset!');
     return
 end
-if neucube.number_of_neucube_neural>=2000
-    msgbox('Limited version must have less than 2000 neurons');
-    return;
-end
+% if neucube.number_of_neucube_neural>=2000
+%     msgbox('Limited version must have less than 2000 neurons');
+%     return;
+% end
 unsup_params=handles.gui_params.unsup;
 unsup_params=TrainingCubePanel(unsup_params);
 if ~isstruct(unsup_params)

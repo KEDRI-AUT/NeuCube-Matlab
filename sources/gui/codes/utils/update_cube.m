@@ -20,10 +20,7 @@ switch step
         neuinput=neucube.input_mapping{1};
         axes(handles.cube);
         %     figure('color','white');
-        %The following line is replaced with the one below because warnings
-        %are issued
-        %p=plot3(200,200,200,'r.',neumid(:,1),neumid(:,2),neumid(:,3),'b.',200,200,200,'ms',200,200,200,'cs',neuinput(:,1),neuinput(:,2),neuinput(:,3),'ys','EraseMode','normal');
-        p=plot3(200,200,200,'r.',neumid(:,1),neumid(:,2),neumid(:,3),'b.',200,200,200,'ms',200,200,200,'cs',neuinput(:,1),neuinput(:,2),neuinput(:,3),'ys');
+        p=plot3(200,200,200,'r.',neumid(:,1),neumid(:,2),neumid(:,3),'b.',200,200,200,'ms',200,200,200,'cs',neuinput(:,1),neuinput(:,2),neuinput(:,3),'ys','EraseMode','normal');
         %    p=plot3(200,200,200,'r.',200,200,200,'b.',200,200,200,'ms',200,200,200,'cs',200,200,200,'ys','EraseMode','normal');
         set(p(1),'MarkerSize',20); %firing neuron
         set(p(2),'MarkerSize',10); %non-firing neuron
@@ -31,7 +28,7 @@ switch step
         set(p(4),'MarkerFaceColor','c','MarkerSize',10); %negative input neuron
         set(p(5),'MarkerFaceColor','y','MarkerSize',10); %zeros input neuron
         set(gcf,'Renderer','Painters','RendererMode','manual');
-        set(gca,'nextplot','add');
+        set(gca,'DrawMode','fast','nextplot','add');
         set(text,'Interpreter','none')
         % grid on
         xlabel('X');

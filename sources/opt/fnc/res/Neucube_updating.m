@@ -18,7 +18,6 @@ neuinput=neucube.input_mapping{1};
 neumid=neucube.neumid;
 
 if state_flag==1 
-    % This block of code will not run if DeSNN Verification happens
     spike_state=dataset.spike_state_for_training;
     length_per_sample=dataset.training_time_length;
     if STDP==1 && LDCprobability>0 
@@ -74,7 +73,8 @@ if show_progress_bar
         hbar=waitbar(0,'Processing validation data...');
     end
 end
-for m = 1:spike_state_length  %all time frames of all patient  
+for m = 1:spike_state_length  %all time frames of all patient
+    set(handles.edit5,'String',num2str(m));
     %     Neucube_update_MEX(spike_state_length,time_elapse,neucube_spike_flag,neucube_last_spike_time,neucube_connection,neucube_potential,neucube_weight,neucube_threshold,spike_state,neucube_output,m,neucube_leak_per_tickt);
     if mod(m,length_per_sample) == 1     
         neucube_spike_flag = zeros(1,number_of_neucube_neural);
@@ -158,6 +158,7 @@ if show_progress_bar && ishandle(hbar)
 end
 
 neucube.neucube_output=neucube_output;
+neucube.neucube_output_visualization=neucube_output';
 neucube.neucube_weight=neucube_weight;
 neucube.neucube_connection=neucube_connection; 
 neucube.spike_transmission_amount=spike_transmission_amount;

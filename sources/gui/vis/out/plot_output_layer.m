@@ -16,10 +16,10 @@ if nargin<6
         end
     end
 end
-if sample_amount>200
-    msgbox(sprintf('Unable to display %d output neurons! ', sample_amount));
-    return;
-end
+% if sample_amount>200
+%     msgbox(sprintf('Unable to display %d output neurons! ', sample_amount));
+%     return;
+% end
 
 
 

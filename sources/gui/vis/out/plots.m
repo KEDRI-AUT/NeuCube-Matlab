@@ -4,7 +4,7 @@ cube_pos=handles.cube_pos;
 cube_pos(4)=cube_pos(4)/7*3;
 cla(handles.cube,'reset');
 set(handles.cube,'Position',cube_pos);
-stem(handles.cube,1:len,handles.spike(1:len),'.');
+stem(handles.cube,1:len,squeeze(handles.spike(1:len)),'.');
 set(handles.cube,'ylim',[-1.5 1.5]);
 set(handles.cube,'ytick',[-1 1]);
 xlabel('Time Points');

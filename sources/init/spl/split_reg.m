@@ -22,13 +22,16 @@
                 eeg_data_for_training=cat(3,eeg_data_for_training,samples_of_this_class(:,:,training_idx));
                 class_label_for_training = [class_label_for_training ones(1,number_of_training_sample)*c];
                 training_sample_id=cat(2,training_sample_id,sample_id_of_this_class(training_idx));
+                
+                
             end
             
             if number_of_validation_sample>0
                 eeg_data_for_validation=cat(3,eeg_data_for_validation, samples_of_this_class(:,:,validation_idx));
                 class_label_for_validation = [class_label_for_validation ones(1,number_of_validation_sample)*c];
+                validation_sample_id=cat(2,validation_sample_id,sample_id_of_this_class(validation_idx));
             end
             
             sample_amount_for_training=sample_amount_for_training+number_of_training_sample;
             sample_amount_for_validation=sample_amount_for_validation+number_of_validation_sample;
-        end
+ end

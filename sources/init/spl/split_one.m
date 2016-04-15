@@ -17,6 +17,7 @@
         class_label_for_training=class_label(L);
         class_label_for_validation=class_label(~L);
         training_sample_id=sample_id(L);
+        validation_sample_id=sample_id(~L);
         
         sample_amount_for_training=sum(L);
         sample_amount_for_validation=total_sample_number-sum(L);

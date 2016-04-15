@@ -29,7 +29,7 @@ axes(handles.cube);
 plot3(0,0,0,'w');
 axis([-60 60 -80 60 -40 60]);
 box on
-set(gcf,'name','NeuCube(V1.1)');
+set(gcf,'name','NeuCube(v1.2)');
 
 set(handles.output_layer,'xtick',[],'xticklabel',[])
 set(handles.output_layer,'ytick',[],'yticklabel',[])
@@ -42,7 +42,7 @@ axis(handles.axes5,'off');
 % if ~flag
 %     retrun;
 % end
-str=sprintf('NeuCube is a Neurocomputing Software/Hardware Development Environment for Spiking Neural Network Applications in Data Mining, Pattern Recognition and Predictive Data Modelling. NeuCube is an intellectual property owned by AUT.\n\nPlease load your dataset from file menu.');
+str=sprintf('NeuCube is a Neurocomputing Software/Hardware Development Environment for Spiking Neural Network Applications in Data Mining, Pattern Recognition and Predictive Data Modelling. NeuCube is an intellectual property owned by AUT.\n\n Please load your dataset from file menu.');
 %str=sprintf('Copyright KEDRI (Please see "http://www.kedri.aut.ac.nz/neucube" for further detail)\n\nPlease load your dataset from file menu');
 output_information(str,handles);
 handles.gui_params=reset_parameters();
@@ -113,9 +113,9 @@ function help_menu_Callback(hObject, eventdata, handles)
 
 function help_user_manual_Callback(hObject, eventdata, handles)  
 if isdeployed
-  web('https://dev.aut.ac.nz/__data/assets/pdf_file/0004/578173/manual.pdf')
+  web('https://dev.aut.ac.nz/__data/assets/pdf_file/0009/626427/NeuCube-v1-2-Manual-March-2016.pdf')
 else
-  web('https://dev.aut.ac.nz/__data/assets/pdf_file/0004/578173/manual.pdf')
+  web('https://dev.aut.ac.nz/__data/assets/pdf_file/0009/626427/NeuCube-v1-2-Manual-March-2016.pdf')
    %open('docs\NeuCube V1.1 Manual June  2015.pdf') 
 end
 %open('NeuCube V1.1 Manual June  2015.pdf')
@@ -173,3 +173,24 @@ function M5_module_Callback(hObject, eventdata, handles)
 
 function menu_statistics_Callback(hObject, eventdata, handles)
 
+
+function edit5_Callback(hObject, eventdata, handles)
+
+
+function edit5_CreateFcn(hObject, eventdata, handles)
+
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+function spike_activity_Callback(hObject,eventdata,handles)
+if(isfield(handles,'neucube'))
+    if(isfield(handles.neucube,'neucube_output_visualization'))
+        spike_playback(handles.neucube)
+    else
+      msgbox('SNNcube is not trained!!')
+      return
+    end
+else
+    msgbox('SNNcube is not trained!!')
+end

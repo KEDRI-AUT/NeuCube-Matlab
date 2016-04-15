@@ -41,7 +41,7 @@ len=length(signal);
 if len>500
     len=500;
 end
-handles.signal=signal;
+%handles.signal=signal;
 if(dataset.type~=3)
     if(dataset.training_set_ratio==1)
         dataset.validation_data=dataset.training_data;
@@ -64,6 +64,10 @@ switch method
     case 4 % Foreward step
         str=sprintf('Encoding Parameters:\n   Method: FS\n   Threshold:%.02f \n\nSpike Rate: %.02f',encoding_params.spike_threshold,get_spike_rate(dataset));
 end
+handles.signal=dataset.data(:,feature_id,sample_id);
+
+
+
 set(h,'Pointer','arrow');
 neucube.step=2;
 
@@ -78,11 +82,24 @@ output_information(str,handles);
 handles.gui_params.encoding=encoding_params;
 handles.dataset=dataset;
 
-if(dataset.type~=3)
 
-    spike=dataset_tmp.spike_state_for_training((sample_id-1)*dataset_tmp.length_per_sample+1:sample_id*dataset.length_per_sample, feature_id);    
-    L=spike==0;
-    spike(L)=nan;
+
+if(dataset.type~=3)
+    if(~isempty(find(dataset.training_sample_id==sample_id)))
+        idx=find(dataset.training_sample_id==sample_id);
+        spike=dataset.spike_state_for_training((idx-1)*dataset.length_per_sample+1:idx*dataset.length_per_sample, feature_id);
+    %spike=dataset.spike_state_for_training((sample_id-1)*dataset.length_per_sample+1:sample_id*dataset.length_per_sample, feature_id);
+    %spike=dataset_tmp.spike_state_for_training((sample_id-1)*dataset_tmp.length_per_sample+1:sample_id*dataset.length_per_sample, feature_id);    
+        L=spike==0;
+        spike(L)=nan;
+    else
+        idx=find(dataset.validation_sample_id==sample_id);
+        spike=dataset.spike_state_for_validation((idx-1)*dataset.length_per_sample+1:idx*dataset.length_per_sample, feature_id);
+    %spike=dataset.spike_state_for_training((sample_id-1)*dataset.length_per_sample+1:sample_id*dataset.length_per_sample, feature_id);
+    %spike=dataset_tmp.spike_state_for_training((sample_id-1)*dataset_tmp.length_per_sample+1:sample_id*dataset.length_per_sample, feature_id);    
+        L=spike==0;
+        spike(L)=nan;
+    end
 
     handles.spike=spike;
     plots(handles,len);

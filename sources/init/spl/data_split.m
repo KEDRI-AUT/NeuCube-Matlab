@@ -22,6 +22,7 @@ class_label_for_validation=[];
 sample_amount_for_training=0;
 sample_amount_for_validation=0;
 training_sample_id=[];
+validation_sample_id=[];
 
 if number_of_class==1 %regression
     sample_amount_for_training=floor(total_sample_number*training_percentage);
@@ -47,3 +48,4 @@ dataset.target_value_for_training=class_label_for_training;
 dataset.target_value_for_validation=class_label_for_validation;
 
 dataset.training_sample_id=training_sample_id;
+dataset.validation_sample_id=validation_sample_id;
