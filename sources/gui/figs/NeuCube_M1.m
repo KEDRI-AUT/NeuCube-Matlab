@@ -29,7 +29,7 @@ axes(handles.cube);
 plot3(0,0,0,'w');
 axis([-60 60 -80 60 -40 60]);
 box on
-set(gcf,'name','NeuCube(v1.2)');
+set(gcf,'name','NeuCube(v1.3)');
 
 set(handles.output_layer,'xtick',[],'xticklabel',[])
 set(handles.output_layer,'ytick',[],'yticklabel',[])
@@ -113,12 +113,12 @@ function help_menu_Callback(hObject, eventdata, handles)
 
 function help_user_manual_Callback(hObject, eventdata, handles)  
 if isdeployed
-  web('https://dev.aut.ac.nz/__data/assets/pdf_file/0009/626427/NeuCube-v1-2-Manual-March-2016.pdf')
+  web('https://kedri.aut.ac.nz/neucube_manual')
 else
-  web('https://dev.aut.ac.nz/__data/assets/pdf_file/0009/626427/NeuCube-v1-2-Manual-March-2016.pdf')
-   %open('docs\NeuCube V1.1 Manual June  2015.pdf') 
+  web('https://kedri.aut.ac.nz/neucube_manual')
+   %open('docs\NeuCube V1.3 Manual June  2016.pdf') 
 end
-%open('NeuCube V1.1 Manual June  2015.pdf')
+%open('NeuCube V1.3 Manual June  2016.pdf')
 
 function help_about_Callback(hObject, eventdata, handles)
 helpDoc;

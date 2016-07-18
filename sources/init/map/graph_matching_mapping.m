@@ -15,9 +15,12 @@ neuinput=neuron_location(idx(ppp(1:number_of_input)),:);
 
 %input neurons
 alpha=dataset.encoding.spike_threshold;
-variable_threshold=get_threshold(dataset,alpha);
-spike_train=signal2spike(dataset.data,variable_threshold);
-% spike_train=cat(1,dataset.spike_state_for_training,dataset.spike_state_for_validation);
+
+%variable_threshold=get_threshold(dataset,alpha);
+%spike_train=signal2spike(dataset.data,variable_threshold);
+
+spike_train=cat(1,dataset.spike_state_for_training,dataset.spike_state_for_validation);
+
 pos_spk=spike_train(:,1:number_of_input)>0;
 neg_spk=spike_train(:,1:number_of_input)<0;
 

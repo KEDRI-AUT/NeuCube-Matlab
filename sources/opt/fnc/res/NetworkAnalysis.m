@@ -341,7 +341,10 @@ switch get(handles.analysisi_content_popupmenu,'value')
         percentValues = get(hText,'String');
         customStrings = strcat('(',percentValues);
         customStrings = strcat(customStrings,')');
-        customStrings = strcat(Names',customStrings);
+        if(size(Names,1)==1)
+            Names=Names';
+        end
+        customStrings = strcat(Names,customStrings);
         set(hText,{'String'},customStrings);
     case 4 %plot clusters
         plot3(neuron_location(:,1),neuron_location(:,2),neuron_location(:,3),'k.','markersize',15); %plot all neurons

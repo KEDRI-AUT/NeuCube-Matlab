@@ -1,5 +1,10 @@
 function variable_threshold=get_threshold(dataset,alpha)
-data=dataset.data;
+%data=dataset.data;
+if(dataset.type==3)
+    data=dataset.validation_data;
+else
+    data=dataset.training_data;
+end
 spk=diff(data,1,1);
 variable_threshold=zeros(1,size(data,2));
 for k=1:size(spk,3)

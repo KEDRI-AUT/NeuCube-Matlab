@@ -1,10 +1,9 @@
-function neucube=deSNN_training(dataset, neucube)
-%根据学习样本量初始化deSNN神经元个数         
+function neucube=deSNN_training(dataset, neucube)        
 global show_progress_bar 
 
 classifier=neucube.classifier;
 if isempty(classifier)
-    error('No classifier!');
+    msgbox('No classifier!');
 end
 
 input_dimension = neucube.number_of_neucube_neural;
@@ -29,6 +28,7 @@ for x = 1:amount_to_train
     
     if show_progress_bar && ~ishandle(hbar)
         error('User terminated!');
+        
     end
     
     order_sn = 0;

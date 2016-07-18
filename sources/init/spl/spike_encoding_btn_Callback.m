@@ -62,6 +62,7 @@ switch method
         str=sprintf('Encoding Parameters:\n   Method: MV\n   Threshold:%.02f\nWindow Size:%d \n\nSpike Rate: %.02f',encoding_params.spike_threshold,encoding_params.window_size,get_spike_rate(dataset));
         
     case 4 % Foreward step
+        [dataset, dataset_tmp]=ecd_fws(dataset,dataset_tmp,encoding_params);
         str=sprintf('Encoding Parameters:\n   Method: FS\n   Threshold:%.02f \n\nSpike Rate: %.02f',encoding_params.spike_threshold,get_spike_rate(dataset));
 end
 handles.signal=dataset.data(:,feature_id,sample_id);
@@ -85,22 +86,9 @@ handles.dataset=dataset;
 
 
 if(dataset.type~=3)
-    if(~isempty(find(dataset.training_sample_id==sample_id)))
-        idx=find(dataset.training_sample_id==sample_id);
-        spike=dataset.spike_state_for_training((idx-1)*dataset.length_per_sample+1:idx*dataset.length_per_sample, feature_id);
-    %spike=dataset.spike_state_for_training((sample_id-1)*dataset.length_per_sample+1:sample_id*dataset.length_per_sample, feature_id);
-    %spike=dataset_tmp.spike_state_for_training((sample_id-1)*dataset_tmp.length_per_sample+1:sample_id*dataset.length_per_sample, feature_id);    
-        L=spike==0;
-        spike(L)=nan;
-    else
-        idx=find(dataset.validation_sample_id==sample_id);
-        spike=dataset.spike_state_for_validation((idx-1)*dataset.length_per_sample+1:idx*dataset.length_per_sample, feature_id);
-    %spike=dataset.spike_state_for_training((sample_id-1)*dataset.length_per_sample+1:sample_id*dataset.length_per_sample, feature_id);
-    %spike=dataset_tmp.spike_state_for_training((sample_id-1)*dataset_tmp.length_per_sample+1:sample_id*dataset.length_per_sample, feature_id);    
-        L=spike==0;
-        spike(L)=nan;
-    end
-
+    spike=dataset_tmp.spike_state_for_training((sample_id-1)*dataset_tmp.length_per_sample+1:sample_id*dataset_tmp.length_per_sample, feature_id);
+    L=spike==0;
+    spike(L)=nan;
     handles.spike=spike;
     plots(handles,len);
 else

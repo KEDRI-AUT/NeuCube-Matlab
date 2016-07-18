@@ -1,6 +1,6 @@
 function rate=get_spike_rate(dataset)
 if  isempty(dataset.data)
-    error('Please load your dataset and choose your encolding method');
+    msgbox('Please load your dataset and choose your encolding method');
 end
 number_of_input=dataset.feature_number;
 pos_neg_spike_state=cat(1,dataset.spike_state_for_training,dataset.spike_state_for_validation);

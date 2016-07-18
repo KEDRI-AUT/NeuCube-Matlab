@@ -5,6 +5,6 @@ if isa(file,'double')==1
     return
 else
     gui_params=handles.gui_params;
-    save(strcat(path,file),'gui_params');
+    save(strcat(path,file),'gui_params', '-v7.3');
 end
 output_information('Parameters are saved sucessfully!', handles);

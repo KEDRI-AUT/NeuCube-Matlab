@@ -56,7 +56,7 @@ handles.neucube=neucube;
 handles.gui_params.sup=sup_params;
 guidata(hObject, handles);
 ui_state(handles, 5, 0);
-str=sprintf('Training Classifier Parameters:\n  Mod:%.02f\n  Drift:%.02f\n  KNN:%d\n  Sigma:%.02f\n\n Training Classifier Finished!',...
+str=sprintf('Training Classifier Parameters:\n  Mod:%.03f\n  Drift:%.03f\n  KNN:%d\n  Sigma:%.02f\n\n Training Classifier Finished!',...
     neucube.classifier.mod,neucube.classifier.drift,neucube.classifier.K, neucube.classifier.sigma);
 output_information(str, handles);
 

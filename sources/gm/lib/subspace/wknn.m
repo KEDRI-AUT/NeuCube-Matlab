@@ -7,7 +7,8 @@ if nargin<5
     end
 end
 if ~isvector(lab_T)
-    error('labels must be a one dimension vector');
+    msgbox('labels must be a one dimension vector');
+	return;
 end
 labels=lab_T(:);
 if size(X_T,2) ~= length(labels)
@@ -21,6 +22,7 @@ if size(IDX,2)<=K
 end
 if K==0
     msgbox('K is too large!');
+	return;
 end
 IDX=IDX(:,1:end-1);
 D=D(:,1:end-1)./repmat(D(:,end)+eps,1,K);

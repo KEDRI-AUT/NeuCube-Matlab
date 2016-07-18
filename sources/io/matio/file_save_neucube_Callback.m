@@ -5,6 +5,6 @@ if isa(file,'double')==1
     return
 else
     neucube=handles.neucube;
-    save(strcat(path,file),'neucube');
+    save(strcat(path,file),'neucube', '-v7.3');
 end
 output_information('NeuCube is saved sucessfully!', handles);

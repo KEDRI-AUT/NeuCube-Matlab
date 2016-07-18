@@ -5,13 +5,15 @@ function dataset=MW_encoding(dataset,flag)
 inputnum=dataset.feature_number;
 
 if isempty(dataset.data)
-    error('No data!');
+    msgbox('No data!');
+	return;
 end
 
 %check the threshold
 variable_threshold=get_threshold(dataset,dataset.encoding.spike_threshold);
 if length(variable_threshold) ~= inputnum
-    error('Encoding threshold used for the data set is incorrect');
+    msgbox('Encoding threshold used for the data set is incorrect');
+	return;
 end
 
 %get the window size for the moving window

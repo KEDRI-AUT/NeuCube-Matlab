@@ -6,10 +6,12 @@ neuinput=neucube.input_mapping{1};
 number_of_neucube_neural=neucube.number_of_neucube_neural;
 neuron_location=neucube.neuron_location;
 if number_of_input<=0
-    error('Please link this neucube to a valid data set!');
+    msgbox('Please link this neucube to a valid data set!');
+	return;
 end
 if isempty(neuinput)
-    error('No input mapping!');
+    msgbox('No input mapping!');
+	return;
 end
 
 %find the index of each input neuron
@@ -21,20 +23,23 @@ for k=1:size(neuinput,1)
 
     idx=find(L);
     if ~neucube.is_extended && (isempty(idx) || length(idx)>1)
-        error('Some input coordinates are incorrect or repeated!');
+        msgbox('Some input coordinates are incorrect or repeated!');
+		return;
     end
     idx=sort(idx);
     indices_of_input_neuron(k)=idx(1);
 end
 indices_of_input_neuron(indices_of_input_neuron==-1)=[];
 if length(unique(indices_of_input_neuron))<number_of_input || min(indices_of_input_neuron)<1 || max(indices_of_input_neuron)>number_of_neucube_neural
-    error('Some input coordinates are incorrect or repeated!');
+    msgbox('Some input coordinates are incorrect or repeated!');
+	return;
 end
 
 %find neurons in the middle
 L=ismember(neuinput,neuron_location,'rows');
 if sum(L)~=size(neuinput,1)
-    error('Some of the coordinates of the input neurons are incorrect');
+    msgbox('Some of the coordinates of the input neurons are incorrect');
+	return;
 end
 L=ismember(neuron_location,neuinput,'rows');
 neumid=neuron_location(~L,:);
@@ -51,9 +56,16 @@ L=neudistance==0;
 neudistance_inv=1./neudistance;
 neudistance_inv(L)=0;
 
+%normalise the inverse of the distance between 0 and 0.1 
+max_value_for_neudist_inv=0.1;
+min_value_for_neudist_inv=0;
+neudistance_inv=(neudistance_inv-min(min(neudistance_inv)))/(max(max(neudistance_inv))-min(min(neudistance_inv)));
+range=(max_value_for_neudist_inv-min_value_for_neudist_inv);
+neudistance_inv = (neudistance_inv*range) + min_value_for_neudist_inv;
 
 %20 percent of the weight is positive number, and 80 percent is negative
 neucube_weight = sign(rand(number_of_neucube_neural)-0.2).*rand(number_of_neucube_neural).*neudistance_inv;
+
 neucube_connection = ones(number_of_neucube_neural);
 choice=randi(2,number_of_neucube_neural)-1;
 
@@ -90,7 +102,8 @@ for i =1:number_of_neucube_neural
     end
     if show_progress_bar
         if ~ishandle(hbar)
-            error('User terminated!');
+            msgbox('User terminated!');
+			return;
         end
         if mod(i,20)==0
             hbar=waitbar(i/number_of_neucube_neural,hbar);

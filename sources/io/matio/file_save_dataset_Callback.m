@@ -7,7 +7,7 @@ if isa(file,'double')==1
 else
     set(h,'Pointer','watch');
     dataset=handles.dataset;
-    save(strcat(path,file),'dataset');
+    save(strcat(path,file),'dataset', '-v7.3');
 end
 output_information('Data set is saved sucessfully!', handles);
 set(h,'Pointer','arrow');

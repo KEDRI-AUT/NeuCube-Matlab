@@ -40,7 +40,7 @@ function d = L2_distance(a,b,df)
 % be zero.  
 
 if (nargin < 2)
-   error('Not enough input arguments');
+   msgbox('Not enough input arguments');
 end
 
 if (nargin < 3)
@@ -48,7 +48,7 @@ if (nargin < 3)
 end
 
 if (size(a,1) ~= size(b,1))
-   error('A and B should be of same dimensionality');
+   msgbox('A and B should be of same dimensionality');
 end
 
 if ~(isreal(a)*isreal(b))

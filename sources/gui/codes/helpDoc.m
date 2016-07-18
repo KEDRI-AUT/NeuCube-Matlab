@@ -79,9 +79,9 @@ close;
 
 
 function text2_ButtonDownFcn(hObject, eventdata, handles)
-web('http://www.kedri.aut.ac.nz/', '-browser');
+web('http://www.kedri.aut.ac.nz/');
 
 
 
 function pushbutton2_Callback(hObject, eventdata, handles)
-web('http://www.kedri.aut.ac.nz/', '-browser');
+web('http://www.kedri.aut.ac.nz/');

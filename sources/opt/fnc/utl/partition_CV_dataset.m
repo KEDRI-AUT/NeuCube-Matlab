@@ -37,6 +37,7 @@ else
         training_sets{k}=tind;
         validation_sets{k}=rind((k-1)*Nk+1:end);
     else %classification
+        
         class_label=target_value(:);
         labelset=unique(class_label);
         number_of_class=length(labelset);
@@ -53,14 +54,19 @@ else
                 end
                 
                 class_ind=find(L);
+                index = randperm(numel(class_ind));
+                class_ind = class_ind(index);
                 tind=cat(1,tind, class_ind((k-1)*Nk+1:k*Nk));
             end
             
-            training_sets{k}=tind;
+            
+            %training_sets{k}=tind;
+            validation_sets{k}=tind;
             
             L=false(length(class_label),1);
             L(tind)=true;
-            validation_sets{k}=find(~L);
+            %validation_sets{k}=find(~L);
+            training_sets{k}=find(~L);
         end
         k=k+1;
         tind=[];
@@ -77,10 +83,13 @@ else
             tind=cat(1,tind, class_ind((k-1)*Nk+1:end));
         end
         
-        training_sets{k}=tind;
+        %training_sets{k}=tind;
+        validation_sets{k}=tind;
         
         L=false(length(class_label),1);
         L(tind)=true;
-        validation_sets{k}=find(~L);
+        %validation_sets{k}=find(~L);
+        training_sets{k}=find(~L);
     end
+
 end

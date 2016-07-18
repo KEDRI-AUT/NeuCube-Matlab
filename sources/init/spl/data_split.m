@@ -2,12 +2,14 @@ function dataset=data_split(dataset)
 % split the dataset into training and validation parts
 
 if isempty(dataset.data) || length(size(dataset.data))~=3
-    error('Bad data matrix! ');
+    msgbox('Bad data matrix! ');
+	return;
 end
 
 training_percentage=dataset.training_set_ratio;
 if training_percentage<0 || training_percentage>1
-    error('Training set division must be in interval [0,1]');
+    msgbox('Training set division must be in interval [0,1]');
+	return;
 end
 eeg_data=dataset.data;
 total_sample_number = dataset.total_sample_number;  %samples

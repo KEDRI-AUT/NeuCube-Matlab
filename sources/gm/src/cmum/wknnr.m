@@ -6,7 +6,7 @@ if nargin<5
     end
 end
 if ~isvector(lab_T)
-    error('labels must be a one dimension vector');
+    msgbox('labels must be a one dimension vector');
 end
 labels=lab_T(:);
 if size(X_T,2) ~= length(labels)

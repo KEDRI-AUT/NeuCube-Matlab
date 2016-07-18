@@ -15,7 +15,7 @@ global lPr;
 
 % check
 if nargin == 0 || ~ischar(nm)
-    error('incorrect input for prIn');
+    msgbox('incorrect input for prIn');
 end
 
 % init

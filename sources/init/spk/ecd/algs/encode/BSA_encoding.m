@@ -19,7 +19,8 @@ filter_length=length(Filter);
 inputnum=dataset.feature_number;
 
 if isempty(dataset.data)
-    error('No data!');
+    msgbox('No data!');
+	return;
 end
 
 %check the threshold
@@ -29,7 +30,8 @@ if length(threshold)==1 %the threshold is a scalar
 elseif length(threshold)==inputnum
     BSA_Threshold_rowVector=threshold;
 else
-    error('Encoding threshold used for the data set is incorrect');
+    msgbox('Encoding threshold used for the data set is incorrect');
+	return;
 end
 
 %get the number of samples for training data and validation data seperately
