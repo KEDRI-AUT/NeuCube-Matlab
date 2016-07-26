@@ -109,9 +109,9 @@ function neucube = Neucube_updating(dataset,neucube,state_flag,STDP,round,handle
                             %neucube.neucube_weight(j,i) = neucube.neucube_weight(j,i) + STDP_rate / (time_elapse - neucube_last_spike_time(j) + 1);
                             update=neucube.neucube_weight(j,i) + STDP_rate / (time_elapse - neucube_last_spike_time(j) + 1);
                             if(update>=0)
-                                neucube.neucube_weight(i,j)=min(update,max_value_of_neucube_weight);
+                                neucube.neucube_weight(j,i)=min(update,max_value_of_neucube_weight);
                             else
-                                neucube.neucube_weight(i,j)=max(update,min_value_of_neucube_weight);
+                                neucube.neucube_weight(j,i)=max(update,min_value_of_neucube_weight);
                             end
                         end
                     end
@@ -262,7 +262,7 @@ function neucube = Neucube_updating(dataset,neucube,state_flag,STDP,round,handle
         %set(handles.edit5,'String',num2str(time_elapse));   % time window in GUI interface, update after each sample
     end
     %% data for Network Analysis
-    if ~isfield(neucube,'spike_amount')
+    if ~isfield(neucube,'spike_transmission_amount')
         neucube.spike_transmission_amount = zeros(neucube.number_of_neucube_neural);
     end
     neucube.spike_transmission_amount = neucube.spike_transmission_amount + repmat(spike_transmission_vec,1,neucube.number_of_neucube_neural).*neucube.neucube_connection;
