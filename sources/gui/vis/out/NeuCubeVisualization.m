@@ -39,7 +39,7 @@ if last_content~=plot_content || ~exist('p','var') || ~ishandle(p(1))
                 c = [corrd1(3) corrd2(3)];
                 
                 if neucube_weight(ii,jj) > 0
-                    plot3(a,b,c);
+                    plot3(a,b,c,'b');
                 end
                 if neucube_weight(ii,jj) < 0
                     plot3(a,b,c,'r');
@@ -117,7 +117,7 @@ elseif plot_content==2
             c = [corrd1(3) corrd2(3)];
             
             if neucube_weight(ii,jj) > 0
-                plot3(a,b,c);
+                plot3(a,b,c,'b');
             end
             if neucube_weight(ii,jj) < 0
                 plot3(a,b,c,'r');
