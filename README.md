@@ -6,7 +6,7 @@ Clone this repository and run `NeuCube.m`.
 
 ## For Collaborators
 
-Please do not update this repository directly. All pull request are welcome.
+Please do not update this repository directly. All pull requests are welcome.
 
 ## License
 
